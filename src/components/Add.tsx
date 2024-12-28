@@ -1,17 +1,25 @@
 "use client";
 import React, { useState } from "react";
 
-export default function Add() {
+export default function Add({
+  productId,
+  variantId,
+  stockNumber,
+}: {
+  productId: string;
+  variantId: string;
+  stockNumber: number;
+}) {
   const [quantity, setQuantity] = useState(1);
 
-  //Temporary
-  const stock = 4;
+  // //Temporary
+  // const stock = 4;
 
   const handleQuantity = (type: "i" | "d") => {
     if (type === "d" && quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
-    if (type === "i" && quantity < stock) {
+    if (type === "i" && quantity < stockNumber) {
       setQuantity((prev) => prev + 1);
     }
   };
@@ -37,8 +45,8 @@ export default function Add() {
             </button>
           </div>
           <div className="">
-            Only <span className="text-orange-500">4 items</span> left! <br />{" "}
-            {"Don't"} miss it
+            Only <span className="text-orange-500">{stockNumber} items</span>{" "}
+            left! <br /> {"Don't"} miss it
           </div>
         </div>
         <button className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-none">

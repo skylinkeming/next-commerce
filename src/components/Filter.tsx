@@ -10,6 +10,7 @@ const Filter = () => {
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
   ) => {
+    debugger;
     const { name, value } = e.target;
     const params = new URLSearchParams(searchParams);
     params.set(name, value);
